@@ -2,7 +2,7 @@ package order;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import util.ApiForTest;
+import util.Api;
 import util.ApiSpecBuilder;
 
 
@@ -16,7 +16,7 @@ public class OrderSteps {
                 .and()
                 .body(ingredients)
                 .when()
-                .post(ApiForTest.ORDERS_PATH);
+                .post(Api.ORDERS_PATH);
         return response;
     }
 
@@ -25,7 +25,7 @@ public class OrderSteps {
         Response response = ApiSpecBuilder.requestSpec()
                 .auth().oauth2(accessToken)
                 .header("Content-type", "application/json")
-                .get(ApiForTest.ORDERS_PATH);
+                .get(Api.ORDERS_PATH);
         return response;
     }
 

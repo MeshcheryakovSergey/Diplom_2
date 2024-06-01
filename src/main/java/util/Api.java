@@ -1,6 +1,6 @@
 package util;
 
-public class ApiForTest {
+public class Api {
     public static final String REG_PATH = "/api/auth/register";
     public static final String LOGIN_PATH = "/api/auth/login";
     public static final String LOGOUT_PATH = "/api/auth/logout";

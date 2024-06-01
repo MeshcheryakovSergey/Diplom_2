@@ -82,6 +82,7 @@ public class ChangeUserInfoTest {
     public void updatePasswordWithoutAuth() {
         user = new User(email, password, name);
         UserSteps.createUser(user);
+        accessToken = UserSteps.signInUser(user).then().extract().path("accessToken").toString().substring(7);
         User updateInfo = new User(null, RandomStringUtils.randomAlphabetic(10), null);
         UserSteps.updateUserInfoWithoutAuth(updateInfo)
                 .then()
@@ -96,6 +97,7 @@ public class ChangeUserInfoTest {
     public void updateNameWithoutAuth() {
         user = new User(email, password, name);
         UserSteps.createUser(user);
+        accessToken = UserSteps.signInUser(user).then().extract().path("accessToken").toString().substring(7);
         User updateInfo = new User(null, null, RandomStringUtils.randomAlphabetic(10));
         UserSteps.updateUserInfoWithoutAuth(updateInfo)
                 .then()
@@ -110,6 +112,7 @@ public class ChangeUserInfoTest {
     public void updateEmailWithoutAuth() {
         user = new User(email, password, name);
         UserSteps.createUser(user);
+        accessToken = UserSteps.signInUser(user).then().extract().path("accessToken").toString().substring(7);
         User updateInfo = new User(RandomStringUtils.randomAlphabetic(10)+"@mail.ru", null, null);
         UserSteps.updateUserInfoWithoutAuth(updateInfo)
                 .then()
@@ -118,5 +121,4 @@ public class ChangeUserInfoTest {
                 .and()
                 .body("success", equalTo(false));
     }
-
 }

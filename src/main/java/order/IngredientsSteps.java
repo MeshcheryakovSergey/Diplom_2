@@ -2,7 +2,7 @@ package order;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import util.ApiForTest;
+import util.Api;
 import util.ApiSpecBuilder;
 
 public class IngredientsSteps {
@@ -12,7 +12,7 @@ public class IngredientsSteps {
         Response response = ApiSpecBuilder.requestSpec().log().all()
                 .auth().oauth2(accessToken)
                 .header("Content-type", "application/json")
-                .get(ApiForTest.INGREDIENTS_PATH);
+                .get(Api.INGREDIENTS_PATH);
         return response;
     }
 }

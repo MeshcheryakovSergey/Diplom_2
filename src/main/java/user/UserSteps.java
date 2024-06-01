@@ -2,7 +2,7 @@ package user;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import util.ApiForTest;
+import util.Api;
 import util.ApiSpecBuilder;
 
 import java.util.Objects;
@@ -16,7 +16,7 @@ public class UserSteps {
                 .and()
                 .body(user)
                 .when()
-                .post(ApiForTest.REG_PATH);
+                .post(Api.REG_PATH);
         return response;
     }
 
@@ -27,7 +27,7 @@ public class UserSteps {
                 .and()
                 .body(user)
                 .when()
-                .post(ApiForTest.LOGIN_PATH);
+                .post(Api.LOGIN_PATH);
         return response;
     }
 
@@ -38,7 +38,7 @@ public class UserSteps {
                 .and()
                 .body(token)
                 .when()
-                .post(ApiForTest.LOGOUT_PATH);
+                .post(Api.LOGOUT_PATH);
         return response;
     }
 
@@ -49,7 +49,7 @@ public class UserSteps {
                 .and()
                 .body(token)
                 .when()
-                .get(ApiForTest.USER_PATH);
+                .get(Api.USER_PATH);
         return response;
     }
 
@@ -61,7 +61,7 @@ public class UserSteps {
                     .and()
                     .body(user)
                     .when()
-                    .patch(ApiForTest.USER_PATH);
+                    .patch(Api.USER_PATH);
             return response;
     }
 
@@ -72,7 +72,7 @@ public class UserSteps {
                 .and()
                 .body(user)
                 .when()
-                .patch(ApiForTest.USER_PATH);
+                .patch(Api.USER_PATH);
         return response;
     }
 
@@ -81,7 +81,7 @@ public class UserSteps {
         if (Objects.nonNull(accessToken)) {
             ApiSpecBuilder.requestSpec()
                     .auth().oauth2(accessToken)
-                    .delete(ApiForTest.USER_PATH);
+                    .delete(Api.USER_PATH);
         }
     }
 
